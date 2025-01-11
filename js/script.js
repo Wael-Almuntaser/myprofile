@@ -82,3 +82,38 @@ ScrollReveal().reveal('.home-content h3, .home-content p, .about-content', { ori
 ScrollReveal().reveal('.portfolio, .portfolio icon,.portfolio title ', { origin: 'bottom' });
 
 
+
+
+
+
+let deferredPrompt;
+const installButton = document.getElementById('install-button'); // الزر الذي ستظهر فيه الميزة
+
+// التحقق إذا كان الـ Service Worker جاهزًا
+if ('serviceWorker' in navigator) {
+  window.addEventListener('beforeinstallprompt', (event) => {
+    // منع العرض الافتراضي للمتصفح
+    event.preventDefault();
+    // حفظ الحدث لاستخدامه لاحقًا
+    deferredPrompt = event;
+    // أظهر زر التثبيت
+    installButton.style.display = 'block';
+
+    // عندما يضغط المستخدم على زر التثبيت
+    installButton.addEventListener('click', () => {
+      // عرض نافذة التثبيت
+      deferredPrompt.prompt();
+      // انتظر رد المستخدم على النافذة
+      deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('User accepted the install prompt');
+        } else {
+          console.log('User dismissed the install prompt');
+        }
+        // بعد عرض نافذة التثبيت، إخفاء الزر
+        deferredPrompt = null;
+        installButton.style.display = 'none';
+      });
+    });
+  });
+}
