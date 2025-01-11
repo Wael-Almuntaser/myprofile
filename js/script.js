@@ -84,30 +84,3 @@ ScrollReveal().reveal('.portfolio, .portfolio icon,.portfolio title ', { origin:
 
 
 
-
-let deferredPrompt;
-const installButton = document.getElementById('installButton'); // تأكد من أن لديك زر لتثبيت التطبيق في HTML
-
-window.addEventListener('beforeinstallprompt', (event) => {
-  // منع النافذة التلقائية التي تظهر من المتصفح
-  event.preventDefault();
-  // تخزين الحدث لاستخدامه لاحقًا
-  deferredPrompt = event;
-
-  // إظهار الزر
-  installButton.style.display = 'block';
-
-  // عندما ينقر المستخدم على الزر
-  installButton.addEventListener('click', () => {
-    // عرض نافذة التثبيت
-    deferredPrompt.prompt();
-    deferredPrompt.userChoice.then((choiceResult) => {
-      if (choiceResult.outcome === 'accepted') {
-        console.log('User accepted the install prompt');
-      } else {
-        console.log('User dismissed the install prompt');
-      }
-      deferredPrompt = null;
-    });
-  });
-});
