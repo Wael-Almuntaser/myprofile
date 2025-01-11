@@ -5,7 +5,6 @@ const filesToCache = [
   "./css/styles.css",
   "./js/script.js",
   "./manifest.json",
-  "./icon-192x192.png",
   "./icon-512x512.png"
 ];
 
