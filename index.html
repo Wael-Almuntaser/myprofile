@@ -136,7 +136,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css
                     <a href="#Choose">Why Choose</a>
                   </li>
                   <li class="">
-                    <a href="#works">Blog</a>
+                    <a href="#Skills">Skills</a>
                   </li>
                   <li class="">
                     <a href="#Contact">Contact</a>
@@ -387,9 +387,9 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css
 
 
            <!-- نافذة الصورة -->
-    <div id="image-modal">
+    <div id="image-modal" style="display: none;">
       <button id="close-btn" onclick="hideImage()">×</button>
-      <img id="modal-image" src="uploads/project-1.jpg" alt="صورة كاملة">
+      <img id="modal-image"  src="uploads/project-1.jpg" alt="صورة كاملة">
   </div>
 
   
@@ -617,7 +617,7 @@ Let’s turn your ideas into reality! 🚀
       </section>
       
       
-      <section class="clients-section">
+      <section class="clients-section" id="Skills">
         <div class="auto-container">
           <div class="sec-title text-center">
             <!-- <span class="sub-title">Our completed works</span> -->
@@ -905,7 +905,7 @@ Let’s turn your ideas into reality! 🚀
 <script>
   
   document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("image-modal").style.display="none";
+    //document.getElementById("modal-image").style.display="none";
     const modal = document.getElementById("image-modal");
     const modalImage = document.getElementById("modal-image");
     const closeBtn = document.getElementById("close-btn");
